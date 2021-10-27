@@ -9,6 +9,7 @@ export default function Register() {
     const history = useHistory();
     const [countries, setCountries] = useState(null) //for countries select
     const [isLoading,setIsLoading] = useState(false)
+    const [loggedInUser] = useState(JSON.parse(localStorage.getItem("userLoggedIn")));
 
     const [userObj, setObj] = useState({
         firstName: '',
@@ -77,7 +78,7 @@ export default function Register() {
 
     return (
         <div className='registerContainer'>
-            {
+            {loggedInUser ? <>{history.push("/")}</> : (
                 isLoading ? (
                     <div>loading...</div>
                 ) : (<>
@@ -103,7 +104,8 @@ export default function Register() {
                     <input type='submit' value='Register'/>
                 </div>
             </form>
-            </>)}
+            </>)
+            )}
             
         </div>
     )

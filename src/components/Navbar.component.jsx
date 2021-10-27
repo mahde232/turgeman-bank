@@ -1,15 +1,12 @@
-import React from "react";
+import React,{ useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 import Img from "../img/logo3.jpg";
 import "./Navbar.style.css";
-const Navbar = ({logoutCallback}) => {
+const Navbar = ({logoutCallback, loggedInUser}) => {
 
-    const loggedInUser = localStorage.getItem("userLoggedIn");
-   const handleLogout = () => {
-    console.log('logout btn clicked');
+  const handleLogout = () => {
     logoutCallback();
   }
-
 
   return (
     <div className="navbar">

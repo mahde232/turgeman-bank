@@ -1,23 +1,29 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 import Transaction from "./Transaction.component";
 
-export default function Transactions({ loggedInUser }) {
+export default function Transactions() {
   const history = useHistory();
-  const transactionsAPIURL = `https://6178efcbaa7f3400174045f4.mockapi.io/users/${loggedInUser.id}/transactions`;
+
+  const [loggedInUser] = useState(JSON.parse(localStorage.getItem("userLoggedIn")))
+  let transactionsAPIURL;
+  if(loggedInUser)
+    transactionsAPIURL = `https://6178efcbaa7f3400174045f4.mockapi.io/users/${loggedInUser.id}/transactions`;
 
   const [transactionsArray, setTransactionsArray] = useState([]);
 
   const pullTransactionsFromAPI = async () => {
-    const apiResponse = await axios.get(transactionsAPIURL);
-    console.log(apiResponse.data);
-    setTransactionsArray(apiResponse.data);
-  };
+    if(loggedInUser) {
+      const apiResponse = await axios.get(transactionsAPIURL);
+      console.log(apiResponse.data);
+      setTransactionsArray(apiResponse.data);
+    }
+  }
 
   useEffect(() => {
-    console.log("loggedinuser=", loggedInUser);
-    pullTransactionsFromAPI();
+    if(loggedInUser)
+      pullTransactionsFromAPI();
   }, []);
 
   if (!loggedInUser) history.push("/");

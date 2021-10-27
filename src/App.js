@@ -1,4 +1,3 @@
-import { BrowserRouter as Router, Route } from 'react-router-dom';
 import HomePage from './components/HomePage.component';
 import Login from './components/Login.component';
 import Register from './components/Register.component';
@@ -6,31 +5,33 @@ import Navbar from './components/Navbar.component';
 import Transactions from './components/Transactions.component';
 import './App.css';
 import React, { useState, useEffect } from 'react';
+import { useHistory } from "react-router-dom";
+import { Route } from 'react-router-dom';
+
 
 
 function App() {
-  const [loggedInUser, setLoggedInUser] = useState(null)
+  const history = useHistory();
+  const [loggedInUser, setLoggedInUser] = useState(JSON.parse(localStorage.getItem("userLoggedIn")))
 
-  // const getLoggedInUser = (objOfUser) => {
-  //   console.log('father was informed=',objOfUser);
-  //   setLoggedInUser(objOfUser);
-  // }
   const logoutHandler = () => {
     if (localStorage.getItem("userLoggedIn")) {
       localStorage.removeItem("userLoggedIn");
+      setLoggedInUser(null)
+      history.push("/");
     }
+  }
+  const getIndicationOfLoggedInFromSon = (whoLoggedIn) => {
+    setLoggedInUser(whoLoggedIn)
   }
 
   return (
     <div className="App">
-      <Router>
-        <Navbar logoutCallback={logoutHandler} />
+        <Navbar logoutCallback={logoutHandler} loggedInUser={loggedInUser} />
         <Route path="/" exact component={HomePage} />
-        <Route path="/login" render={() => <Login />} />
-        {/* <Route path="/login" component={Login}/> */}
+        <Route path="/login" render={() => <Login informFatherOfLogin={getIndicationOfLoggedInFromSon}/>} />
         <Route path="/register" component={Register} />
-        <Route path="/transactions" render={() => <Transactions loggedInUser={loggedInUser} />} />
-      </Router>
+        <Route path="/transactions" render={() => <Transactions/>} />
     </div>
   );
 }
