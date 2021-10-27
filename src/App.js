@@ -11,20 +11,22 @@ import React,{ useState, useEffect } from 'react';
 function App() {
   const [loggedInUser,setLoggedInUser] = useState(null)
 
-  const getLoggedInUser = (objOfUser) => {
-    console.log('father was informed=',objOfUser);
-    setLoggedInUser(objOfUser);
-  }
+  // const getLoggedInUser = (objOfUser) => {
+  //   console.log('father was informed=',objOfUser);
+  //   setLoggedInUser(objOfUser);
+  // }
   const logoutHandler = () => {
-    setLoggedInUser(null)
+    if (localStorage.getItem("userLoggedIn")){
+      localStorage.removeItem("userLoggedIn");
+    }
   }
 
   return (
     <div className="App">
       <Router>
-        <Navbar whoIsLoggedIn={loggedInUser} logoutCallback={logoutHandler}/>
+        <Navbar logoutCallback={logoutHandler}/>
         <Route path="/" exact component={HomePage}/>
-        <Route path="/login" render={()=> <Login informFatherOfLoggedInUser={getLoggedInUser} loggedInUser={loggedInUser}/>}/>
+        <Route path="/login" render={()=> <Login />}/>
         {/* <Route path="/login" component={Login}/> */}
         <Route path="/register" component={Register}/>
         <Route path="/transactions" render={()=> <Transactions loggedInUser={loggedInUser}/>}/>
