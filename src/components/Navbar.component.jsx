@@ -24,6 +24,11 @@ const Navbar = ({logoutCallback, loggedInUser}) => {
                 My Transactions
               </Link>
             </div>
+            <div className="linkDiv">
+              <Link className="link" to="/addTransaction">
+                Add Transaction
+              </Link>
+            </div>
             <div className="linkDiv" onClick={handleLogout}>
               Logout
             </div>

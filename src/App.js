@@ -7,6 +7,7 @@ import './App.css';
 import React, { useState, useEffect } from 'react';
 import { useHistory } from "react-router-dom";
 import { Route } from 'react-router-dom';
+import AddTransaction from './components/addTransaction.component';
 
 
 
@@ -32,6 +33,7 @@ function App() {
         <Route path="/login" render={() => <Login informFatherOfLogin={getIndicationOfLoggedInFromSon}/>} />
         <Route path="/register" component={Register} />
         <Route path="/transactions" render={() => <Transactions/>} />
+        <Route path="/addTransaction" render={() => <AddTransaction/>} />
     </div>
   );
 }

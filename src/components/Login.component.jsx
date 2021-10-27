@@ -39,7 +39,8 @@ export default function Login({informFatherOfLogin}) {
           setLoggedIn(apiResponse.data[0]);
           localStorage.setItem("userLoggedIn", JSON.stringify({
             id: apiResponse.data[0].id,
-            firstName: apiResponse.data[0].firstName})
+            firstName: apiResponse.data[0].firstName,
+            allowance: apiResponse.data[0].allowance})
           );
           alert('logged in succesfully')
           informFatherOfLogin(apiResponse.data[0])
