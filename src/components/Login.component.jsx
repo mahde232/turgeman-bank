@@ -40,11 +40,12 @@ export default function Login() {
             //remove loader
             if(apiResponse.status===200) { //grabbed users succesfully
                 console.log('success',apiResponse);
-                if(apiResponse.data[0].username.toLowerCase()===userObj.username.toLowerCase() && apiResponse.data[0].password===userObj.password) {
+                if(apiResponse.data.length !== 0 && apiResponse.data[0].username.toLowerCase()===userObj.username.toLowerCase() && apiResponse.data[0].password===userObj.password) {
                     console.log('username and password are correct');
                     setLoggedIn(apiResponse.data[0])
                 }
                 else {
+                    alert('invalid username or password')
                     console.log('invalid username or password');
                     //add/display div that gives feedback that password or username are wrong.
                 }

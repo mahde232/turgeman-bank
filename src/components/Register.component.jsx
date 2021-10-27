@@ -74,22 +74,22 @@ export default function Register() {
     return (
         <div className='registerContainer'>
             <h3>Register</h3>
-            <form id={'registerForm'} autoComplete='new-password' onSubmit={onFormSubmit}>
+            <form id={'registerForm'} onSubmit={onFormSubmit}>
                 <div className='nameInputs'>
                     <input type='text' name={'firstName'} placeholder='First name' onChange={handleOnChange}/>
                     <input type='text' name={'lastName'} placeholder='Last name' onChange={handleOnChange}/>
                 </div>
                 <div>
                 {
-                    countries ? <select form={'registerForm'} name={'country'} onChange={handleOnChange}>
-                        <option key={-1} value={-1} disabled selected>Select Country</option>
+                    countries ? <select form={'registerForm'} defaultValue={-1} name={'country'} onChange={handleOnChange}>
+                        <option key={-1} value={-1} disabled>Select Country</option>
                         {countries.map((item,index) => {
                         return <option key={index} value={item.name}>{item.name}</option>
                     })}</select> 
                     : <></>
                 }
                 </div>
-                <input type='text' name={'username'} placeholder='Username' onChange={handleOnChange}/>
+                <input type='text' name={'username'} autoComplete={'off'} placeholder='Username' onChange={handleOnChange}/>
                 <input type='password' name={'password'} autoComplete="new-password" placeholder='Password' onChange={handleOnChange}/>
                 <div>
                     <input type='submit' value='Register'/>
