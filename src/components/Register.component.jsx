@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 
 const countriesAPIURL = 'https://restcountries.com/v3.1/all';
 const registerAPIURL = 'https://6178efcbaa7f3400174045f4.mockapi.io/users'
 
 export default function Register() {
+    const history = useHistory();
     const [countries, setCountries] = useState(null) //for countries select
+    const [isLoading,setIsLoading] = useState(false)
 
     const [userObj, setObj] = useState({
         firstName: '',
@@ -22,9 +25,9 @@ export default function Register() {
     }, [])
 
     const getCountriesFromAPI = async () => {
-        //show loader
+        setIsLoading(true)
         const apiResponse = await axios.get(countriesAPIURL);
-        //remove loader
+        setIsLoading(false)
         if(apiResponse.status === 200)
         {
             const cleanCountriesData = apiResponse.data.map(countryDetails => {
@@ -55,13 +58,14 @@ export default function Register() {
             }
         })
         if(isGoodToGo) { //if all values are set, everything is good to go.
-            //show loader
+            setIsLoading(true)
             const apiResponse = await axios.post(registerAPIURL, userObj)
-            //remove loader
+            setIsLoading(false)
             if(apiResponse.status===201 || apiResponse.status===200) { //added succesfully
                 console.log('success',apiResponse);
                 e.target.reset()
                 e.target[2].value = -1;
+                history.push("/");
                 //add/display div that gives feedback that user successfully registered.
             }
             else {
@@ -73,8 +77,12 @@ export default function Register() {
 
     return (
         <div className='registerContainer'>
-            <h3>Register</h3>
-            <form id={'registerForm'} onSubmit={onFormSubmit}>
+            {
+                isLoading ? (
+                    <div>loading...</div>
+                ) : (<>
+                    <h3>Register</h3>
+                <form id={'registerForm'} onSubmit={onFormSubmit}>
                 <div className='nameInputs'>
                     <input type='text' name={'firstName'} placeholder='First name' onChange={handleOnChange}/>
                     <input type='text' name={'lastName'} placeholder='Last name' onChange={handleOnChange}/>
@@ -95,6 +103,8 @@ export default function Register() {
                     <input type='submit' value='Register'/>
                 </div>
             </form>
+            </>)}
+            
         </div>
     )
 }
