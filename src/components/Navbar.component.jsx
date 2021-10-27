@@ -13,7 +13,6 @@ const Navbar = ({whoIsLoggedIn,logoutCallback}) => {
     <div className="navbar">
       <div className="logo">
         <Link to="/">
-          {" "}
           <img src={Img} alt="bank logo" />
         </Link>
       </div>
