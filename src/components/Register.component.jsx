@@ -92,7 +92,7 @@ export default function Register() {
                 <input type='text' name={'username'} placeholder='Username' onChange={handleOnChange}/>
                 <input type='password' name={'password'} autoComplete="new-password" placeholder='Password' onChange={handleOnChange}/>
                 <div>
-                    <input type='submit' />
+                    <input type='submit' value='Register'/>
                 </div>
             </form>
         </div>
