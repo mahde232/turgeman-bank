@@ -1,0 +1,46 @@
+:root {
+  --bgcolor: linear-gradient(
+    to bottom right,
+    aliceblue,
+    red,
+    white,
+    red,
+    aliceblue
+  );
+}
+.logo {
+  width: 10%;
+  height: inherit;
+}
+.logo img {
+  width: 100%;
+  height: inherit;
+}
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  background: black;
+}
+.nav {
+  display: flex;
+  height: inherit;
+  width: 20%;
+  justify-content: space-around;
+  align-items: center;
+}
+.link {
+  color: aliceblue;
+  text-decoration: none;
+}
+.linkDiv {
+  padding: 1vh 1vw;
+}
+.linkDiv:hover {
+  background: var(--bgcolor);
+  transform: scale(1.02);
+  cursor: pointer;
+}
+.linkDiv:active {
+  transform: scale(0.98);
+}
