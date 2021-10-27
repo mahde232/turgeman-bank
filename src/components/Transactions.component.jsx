@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
-import Transaction from "./Transaction.componernt";
+import Transaction from "./Transaction.component";
+
 export default function Transactions({ loggedInUser }) {
   const history = useHistory();
   const transactionsAPIURL = `https://6178efcbaa7f3400174045f4.mockapi.io/users/${loggedInUser.id}/transactions`;

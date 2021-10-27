@@ -25,7 +25,6 @@ function App() {
         <Navbar whoIsLoggedIn={loggedInUser} logoutCallback={logoutHandler}/>
         <Route path="/" exact component={HomePage}/>
         <Route path="/login" render={()=> <Login informFatherOfLoggedInUser={getLoggedInUser} loggedInUser={loggedInUser}/>}/>
-        {/* <Route path="/login" component={Login}/> */}
         <Route path="/register" component={Register}/>
         <Route path="/transactions" render={()=> <Transactions loggedInUser={loggedInUser}/>}/>
       </Router>
