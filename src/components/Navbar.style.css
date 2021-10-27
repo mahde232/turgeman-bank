@@ -9,12 +9,11 @@
   );
 }
 .logo {
-  width: 10%;
-  height: inherit;
+  height: 100%;
 }
 .logo img {
+  height: 100%;
   width: 100%;
-  height: inherit;
 }
 .navbar {
   width: 100%;

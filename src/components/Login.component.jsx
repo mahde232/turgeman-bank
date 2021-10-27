@@ -62,6 +62,9 @@ export default function Login({informFatherOfLoggedInUser,loggedInUser}) {
             }
         }
     }
+    if(loggedInUser){
+        history.push("/");
+    }
     return (
         <div className='loginContainer'>
         <div className='loginDiv'>

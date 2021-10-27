@@ -3,8 +3,10 @@ import HomePage from './components/HomePage.component';
 import Login from './components/Login.component';
 import Register from './components/Register.component';
 import Navbar from './components/Navbar.component';
+import Transactions from './components/Transactions.component';
 import './App.css';
 import React,{ useState, useEffect } from 'react';
+
 
 function App() {
   const [loggedInUser,setLoggedInUser] = useState(null)
@@ -25,6 +27,7 @@ function App() {
         <Route path="/login" render={()=> <Login informFatherOfLoggedInUser={getLoggedInUser} loggedInUser={loggedInUser}/>}/>
         {/* <Route path="/login" component={Login}/> */}
         <Route path="/register" component={Register}/>
+        <Route path="/transactions" render={()=> <Transactions loggedInUser={loggedInUser}/>}/>
       </Router>
     </div>
   );

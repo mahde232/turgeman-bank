@@ -20,8 +20,10 @@ const Navbar = ({whoIsLoggedIn,logoutCallback}) => {
         {
           whoIsLoggedIn ?
           (<>
-          {console.log(whoIsLoggedIn)}
             <div style={{color: "white"}}>Hello {whoIsLoggedIn.firstName}</div>
+            <div className="linkDiv" >
+              <Link className="link" to="/transactions">My Transactions</Link>
+              </div>
             <div className="linkDiv" onClick={handleLogout}>Logout</div>
           </>)
           : (<>
