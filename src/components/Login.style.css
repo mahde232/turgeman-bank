@@ -1,4 +1,17 @@
 .loginContainer {
     display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    height: 92vh;
+    padding: 20vh 0;
+}
+.loginDiv {
+    display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: white;
+}
+#loginForm div {
+    margin: 1vh;
 }

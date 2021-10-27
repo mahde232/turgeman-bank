@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 import './Login.style.css'
 
 const loginAPIURL = 'https://6178efcbaa7f3400174045f4.mockapi.io/users/?username='
 
-export default function Login() {
-
+export default function Login({informFatherOfLoggedInUser,loggedInUser}) {
+    const history = useHistory();
     const [userObj,setObj] = useState({
         username: '',
         password: ''
     })
-    const [loggedIn, setLoggedIn] = useState({})
+    const [loggedIn, setLoggedIn] = useState(null)
 
     useEffect(() => {
         console.log(loggedIn);
@@ -43,6 +44,9 @@ export default function Login() {
                 if(apiResponse.data.length !== 0 && apiResponse.data[0].username.toLowerCase()===userObj.username.toLowerCase() && apiResponse.data[0].password===userObj.password) {
                     console.log('username and password are correct');
                     setLoggedIn(apiResponse.data[0])
+                    informFatherOfLoggedInUser(apiResponse.data[0])
+                    //show logged in succesfully div and timeout half a second then move back to HomePage
+                    history.push("/");
                 }
                 else {
                     alert('invalid username or password')
@@ -60,12 +64,17 @@ export default function Login() {
     }
     return (
         <div className='loginContainer'>
+        <div className='loginDiv'>
+            {loggedInUser ? <>Already Logged In</> :
+            <>
             <h3>Login</h3>
             <form id={'loginForm'} onSubmit={onFormSubmit}>
                 <div> <input type='text' name={'username'} placeholder='Username' onChange={handleOnChange}/> </div>
                 <div> <input type='password' name={'password'} autoComplete="new-password" placeholder='Password' onChange={handleOnChange}/> </div>
                 <div> <input type='submit' value='Login' /> </div>
             </form>
+            </>}
+        </div>
         </div>
     )
 }

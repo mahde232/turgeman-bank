@@ -1,9 +1,8 @@
 .turgeman-bank{
-    background: whitesmoke;
     width: 100vw;
-    height: 100vh;
+    height: 92vh;
 }
 .turgeman-bank img{
-   width: 25vmax;
-   height: 10vmax;
+    width: 25vmax;
+    height: 10vmax;
 }

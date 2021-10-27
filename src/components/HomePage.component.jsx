@@ -4,9 +4,9 @@ import Img from "../img/logo2.jpg";
 const HomePage = () => {
   return (
     <div className="turgeman-bank">
-      <img src={Img} alt="bank logo" />
-      <h2>Wellcom to Home Page</h2>
-      <p>Our Bank is the best in the world</p>
+      {/* <img src={Img} alt="bank logo" /> */}
+      <h2>Welcome to the biggest bank in Demona!</h2>
+      <p>Create money out of nothing !</p>
     </div>
   );
 };
