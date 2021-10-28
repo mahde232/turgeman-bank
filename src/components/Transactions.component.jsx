@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import Transaction from "./Transaction.component";
+import './Transactions.style.css'
+import RobBank from '../img/RobABank.jpg'
 
 export default function Transactions() {
   const history = useHistory();
@@ -16,7 +18,7 @@ export default function Transactions() {
   const pullTransactionsFromAPI = async () => {
     if(loggedInUser) {
       const apiResponse = await axios.get(transactionsAPIURL);
-      console.log(apiResponse.data);
+      apiResponse.data.sort((a,b) => a.createdAt.localeCompare(b.createdAt)) //sort transactions by date
       setTransactionsArray(apiResponse.data);
     }
   }
@@ -24,16 +26,17 @@ export default function Transactions() {
   useEffect(() => {
     if(loggedInUser)
       pullTransactionsFromAPI();
-  }, []);
+  }, []); // eslint-disable-line
 
   if (!loggedInUser) history.push("/");
-  return (
+  return ( <>
     <div className="transactionsContainer">
-      <div>
-        {transactionsArray.map((transaction) => {
+        {transactionsArray.length !== 0 ? transactionsArray.map((transaction) => {
           return <Transaction transactionDetails={transaction} />;
-        })}
-      </div>
+        }) : <>There are no transactions in your account.</>
+        }
     </div>
+    <div><img style={{marginTop:'2vh'}} src={RobBank} alt='test'/></div>
+    </>
   );
 }

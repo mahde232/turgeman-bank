@@ -1,0 +1,10 @@
+.transactionsContainer {
+    display: flex;
+    /* flex-direction: column; */
+    flex-wrap: wrap;
+    height: 100%;
+    width: 100%;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 2vh;
+}

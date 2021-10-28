@@ -1,15 +1,22 @@
-import React,{ useState, useEffect} from "react";
+import React,{useEffect} from "react";
 import { Link } from "react-router-dom";
 import Img from "../img/logo3.jpg";
 import "./Navbar.style.css";
+import song from '../audio/turgubank.mpeg'
 const Navbar = ({logoutCallback, loggedInUser}) => {
 
   const handleLogout = () => {
     logoutCallback();
   }
+  useEffect(() => {
+    document.getElementById("song").play();
+  },[])
 
   return (
     <div className="navbar">
+      <audio id='song' no-controls>
+      <source src={song} type="audio/mpeg"/>
+      </audio>
       <div className="logo">
         <Link to="/">
           <img src={Img} alt="bank logo" />
@@ -18,38 +25,38 @@ const Navbar = ({logoutCallback, loggedInUser}) => {
       <div className="nav">
         {loggedInUser ? (
           <>
-            <div style={{ color: "white" }}>Hello {loggedInUser.firstName}</div>
+            <div style={{ color: "white", marginRight:'10px'}}>Hello {loggedInUser.firstName}</div>
+            <Link className="link" to="/transactions">
             <div className="linkDiv">
-              <Link className="link" to="/transactions">
                 My Transactions
-              </Link>
             </div>
+            </Link>
+            <Link className="link" to="/addTransaction">
             <div className="linkDiv">
-              <Link className="link" to="/addTransaction">
                 Add Transaction
-              </Link>
             </div>
+            </Link>
             <div className="linkDiv" onClick={handleLogout}>
               Logout
             </div>
           </>
         ) : (
           <>
+            <Link className="link" to="/">
             <div className="linkDiv">
-              <Link className="link" to="/">
                 Home
-              </Link>
             </div>
+            </Link>
+            <Link className="link" to="/login">
             <div className="linkDiv">
-              <Link className="link" to="/login">
                 Login
-              </Link>
             </div>
+            </Link>
+            <Link className="link" to="/register">
             <div className="linkDiv">
-              <Link className="link" to="/register">
                 Register
-              </Link>
             </div>
+            </Link>
           </>
         )}
       </div>

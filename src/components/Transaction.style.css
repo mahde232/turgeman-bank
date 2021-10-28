@@ -1,0 +1,7 @@
+.transaction {
+    border: 1px solid #6E6E6E;
+    width: fit-content;
+    margin-bottom: 10px;
+    padding: 5px 5px;
+    border-radius: 5px;
+}

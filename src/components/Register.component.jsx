@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import axios from 'axios'
+import './Register.style.css'
+import helloIMG from '../img/hello-bank.gif'
 
 const countriesAPIURL = 'https://restcountries.com/v3.1/all';
 const registerAPIURL = 'https://6178efcbaa7f3400174045f4.mockapi.io/users'
@@ -98,12 +100,15 @@ export default function Register() {
                     : <></>
                 }
                 </div>
+                <div className='usernameInputs'>
                 <input type='text' name={'username'} autoComplete={'off'} placeholder='Username' onChange={handleOnChange}/>
                 <input type='password' name={'password'} autoComplete="new-password" placeholder='Password' onChange={handleOnChange}/>
+                </div>
                 <div>
                     <input type='submit' value='Register'/>
                 </div>
             </form>
+            <img style={{marginTop: '5vh'}} src={helloIMG} alt='test' />
             </>)
             )}
             

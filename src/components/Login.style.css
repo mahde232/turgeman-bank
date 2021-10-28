@@ -1,7 +1,7 @@
 .loginContainer {
     display: flex;
     align-items: flex-start;
-    justify-content: center;
+    justify-content: space-around;
     height: 92vh;
     padding: 20vh 0;
 }
@@ -10,8 +10,31 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    background-color: white;
+    background-color: #1f1f1f;
+    padding-top: 40px;
+    box-shadow: #888 0px 0px 0px 2px;
+    height: 100%;
+}
+#loginForm {
+    padding: 0 20px;
 }
 #loginForm div {
-    margin: 1vh;
+    margin: 30px 0;
+}
+#loginForm input {
+    height: 5vh;
+    width: 40vw;
+    min-height: 50px;
+    min-width: 100px;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #DDD;
+}
+#submit:hover {
+    background-color: rgba(255,255,255,0.6);
+    cursor: pointer;
+}
+#loginImg {
+    height: 100%;
+    width: 40vw;
 }

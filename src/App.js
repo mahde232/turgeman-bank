@@ -4,7 +4,7 @@ import Register from './components/Register.component';
 import Navbar from './components/Navbar.component';
 import Transactions from './components/Transactions.component';
 import './App.css';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useHistory } from "react-router-dom";
 import { Route } from 'react-router-dom';
 import AddTransaction from './components/addTransaction.component';

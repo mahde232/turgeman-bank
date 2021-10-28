@@ -1,8 +1,21 @@
 .turgeman-bank{
+    display: flex;
+    flex-direction: column;
     width: 100vw;
     height: 92vh;
 }
-.turgeman-bank img{
-    width: 25vmax;
-    height: 10vmax;
+h1 {
+    font-size: 48px;
+}
+h3 {
+    margin-bottom: 2vh;
+}
+.picturesFlex {
+    display: flex;
+    justify-content: space-around;
+}
+#img2 {
+    /* height: 700px; */
+    width: 75%;
+    object-fit: contain;
 }

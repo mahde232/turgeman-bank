@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import "./Login.style.css";
+import bankEverywhere from "../img/bank-everywhere.jpg";
 
 const loginAPIURL =
   "https://6178efcbaa7f3400174045f4.mockapi.io/users/?username=";
@@ -40,7 +41,10 @@ export default function Login({informFatherOfLogin}) {
           localStorage.setItem("userLoggedIn", JSON.stringify({
             id: apiResponse.data[0].id,
             firstName: apiResponse.data[0].firstName,
-            allowance: apiResponse.data[0].allowance})
+            lastName: apiResponse.data[0].lastName,
+            allowance: apiResponse.data[0].allowance,
+            inActiveAccount: apiResponse.data[0].inActiveAccount
+          })
           );
           alert('logged in succesfully')
           informFatherOfLogin(apiResponse.data[0])
@@ -63,6 +67,7 @@ export default function Login({informFatherOfLogin}) {
   }
   return (
     <div className="loginContainer">
+      <img id='loginImg' src={bankEverywhere} alt='test'/>
       <div className="loginDiv">
         {loggedInUser ? (
           <>Already Logged In</>
@@ -88,7 +93,7 @@ export default function Login({informFatherOfLogin}) {
                 />
               </div>
               <div>
-                <input type="submit" value="Login" />
+                <input id='submit' type="submit" value="Login" />
               </div>
             </form>
           </>
