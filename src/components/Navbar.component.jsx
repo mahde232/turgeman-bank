@@ -8,9 +8,9 @@ const Navbar = ({logoutCallback, loggedInUser}) => {
   const handleLogout = () => {
     logoutCallback();
   }
-  useEffect(() => {
-    document.getElementById("song").play();
-  },[])
+  // useEffect(() => {
+  //   document.getElementById("song").play();
+  // },[])
 
   return (
     <div className="navbar">
