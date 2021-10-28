@@ -2,7 +2,7 @@ import React,{useEffect} from "react";
 import { Link } from "react-router-dom";
 import Img from "../img/logo3.jpg";
 import "./Navbar.style.css";
-import song from '../audio/turgubank.mpeg'
+// import song from '../audio/turgubank.mpeg'
 const Navbar = ({logoutCallback, loggedInUser}) => {
 
   const handleLogout = () => {
@@ -14,9 +14,9 @@ const Navbar = ({logoutCallback, loggedInUser}) => {
 
   return (
     <div className="navbar">
-      <audio id='song' no-controls>
+      {/* <audio id='song' no-controls>
       <source src={song} type="audio/mpeg"/>
-      </audio>
+      </audio> */}
       <div className="logo">
         <Link to="/">
           <img src={Img} alt="bank logo" />
